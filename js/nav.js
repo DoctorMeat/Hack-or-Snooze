@@ -35,10 +35,28 @@ function updateNavOnLogin() {
   $navUserProfile.text(`${currentUser.username}`).show();
 }
 
-function navSubmitClick(evt){
-  console.debug(evt);
+//submit new post
+function navSubmitClick(){
   hidePageComponents();
   $allStoriesList.show();
   $submitStory.show();
 }
   $navSubmitStory.on("click", navSubmitClick);
+
+//listen for and show favorites
+function navFavoritesClick() {
+  hidePageComponents();
+  addFavoritesToPage();
+}
+
+$body.on("click", "#nav-favorites", navFavoritesClick);
+
+//listen for and show my posts
+
+function navMyPostsClick() {
+  hidePageComponents();
+  addUserStories();
+  $ownStories.show();
+}
+
+$body.on("click", "#nav-my-posts", navMyPostsClick);
